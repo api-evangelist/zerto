@@ -1,0 +1,23 @@
+generated: '2026-07-21'
+method: searched
+source: https://help.zerto.com/
+api: Zerto ZVM REST API v1
+versioning:
+  scheme: uri-path
+  current: v1
+  product_release: 10.0 U6
+  docs: https://help.zerto.com/
+  note: >-
+    The REST API is versioned as /v1 and evolves with the appliance software release train
+    (Zerto 9.x, 10.0, 10.0 U6, ...). New endpoints/fields ship with product updates rather
+    than a separate API version bump.
+deprecation:
+  policy_url: null
+  sunset_header: false
+  note: No public RFC 8594 Sunset/Deprecation header policy is documented for the API.
+sla:
+  url: null
+  note: SLA is governed by the customer's HPE/Zerto support entitlement, not a public API SLA.
+status_page: null
+release_notes: https://help.zerto.com/
+deprecated_operations: []

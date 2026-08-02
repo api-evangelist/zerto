@@ -1,0 +1,21 @@
+generated: '2026-07-21'
+method: searched
+source: https://help.zerto.com/
+docs: https://help.zerto.com/
+api: Zerto ZVM REST API v1
+scheme: product-release-train
+current_version: 10.0 U6
+note: >-
+  The Zerto REST API does not maintain a standalone dated API changelog; API changes ship with
+  the appliance software release train and are documented in the per-release Release Notes on
+  help.zerto.com. Recent product releases below reflect the release train the /v1 API tracks.
+entries:
+  - version: 10.0 U6
+    breaking: false
+    highlights: Update release for Zerto 10.0; incremental fixes and endpoint coverage (basis of the public API reference).
+  - version: 10.0
+    breaking: false
+    highlights: Keycloak-based OAuth2 authentication for the ZVM/ZCA appliance API; expanded cyber-resilience and vault features.
+  - version: 9.x
+    breaking: false
+    highlights: Prior release train; earlier ZVM REST API surface (pre-Keycloak session-based auth on some versions).

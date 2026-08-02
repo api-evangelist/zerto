@@ -1,0 +1,66 @@
+generated: '2026-07-21'
+method: derived
+status: candidate
+source: https://github.com/saackerman/ZertoSwaggerAPI/blob/main/Zerto-API-10.0-U6-Reference.md
+note: >-
+  No official hosted Zerto MCP server was found. This is a CANDIDATE tool list DERIVED from the
+  documented Zerto ZVM REST API (v10.0 U6) endpoints, intended as a starting point for an MCP
+  wrapper over a customer appliance. Write/failover tools are safety-critical DR operations and
+  should require human confirmation.
+server:
+  name: zerto
+  transport: http
+  base_url_pattern: https://<appliance-host>:443/v1
+  auth: Keycloak OAuth2 bearer (see authentication/zerto-authentication.yml)
+tools:
+  - name: list_vpgs
+    description: List all Virtual Protection Groups.
+    source_operation: GET /v1/vpgs
+  - name: get_vpg
+    description: Get details for a specific VPG.
+    source_operation: GET /v1/vpgs/{vpgId}
+  - name: list_vpg_checkpoints
+    description: List recovery checkpoints for a VPG.
+    source_operation: GET /v1/vpgs/{vpgId}/checkpoints
+  - name: start_failover_test
+    description: Start a non-disruptive failover test for a VPG (safety-critical).
+    source_operation: POST /v1/vpgs/{vpgId}/FailoverTest
+  - name: stop_failover_test
+    description: Stop a running failover test for a VPG.
+    source_operation: POST /v1/vpgs/{vpgId}/FailoverTestStop
+  - name: start_failover
+    description: Start a live failover for a VPG (safety-critical, disruptive).
+    source_operation: POST /v1/vpgs/{vpgId}/Failover
+  - name: list_vms
+    description: List all protected virtual machines.
+    source_operation: GET /v1/vms
+  - name: list_vm_points_in_time
+    description: List recovery checkpoints for a VM.
+    source_operation: GET /v1/vms/{vmId}/pointsInTime
+  - name: restore_vm
+    description: Start a VM restore from a checkpoint (safety-critical).
+    source_operation: POST /v1/vms/{vmId}/Restore
+  - name: list_alerts
+    description: List alerts, filterable by date, VPG, level, and entity.
+    source_operation: GET /v1/alerts
+  - name: dismiss_alert
+    description: Dismiss a specific alert.
+    source_operation: POST /v1/alerts/{id}/dismiss
+  - name: list_events
+    description: List system events, filterable.
+    source_operation: GET /v1/events
+  - name: list_vras
+    description: List Virtual Replication Appliances.
+    source_operation: GET /v1/vras
+  - name: list_peer_sites
+    description: List paired peer sites.
+    source_operation: GET /v1/peersites
+  - name: get_local_site
+    description: Get local site information.
+    source_operation: GET /v1/localsite
+  - name: list_tasks
+    description: List tasks (for polling async operations).
+    source_operation: GET /v1/tasks
+  - name: get_task
+    description: Get a specific task's status.
+    source_operation: GET /v1/tasks/{taskId}

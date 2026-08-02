@@ -1,0 +1,36 @@
+generated: '2026-07-21'
+method: searched
+source: https://github.com/ZertoPublic/zerto-api-quickstart/blob/main/GETTING-STARTED.md
+docs: https://help.zerto.com/
+summary:
+  types: [oauth2, openIdConnect]
+  api_key_in: []
+  oauth2_flows: [password, refreshToken]
+schemes:
+  - name: KeycloakOAuth2
+    type: oauth2
+    description: >-
+      Zerto appliances (ZVM / Zerto Cloud Appliance / Zerto In-Cloud) embed a Keycloak
+      identity provider. Clients obtain a bearer JWT via the OAuth2 Resource Owner Password
+      Credentials grant, then send it as `Authorization: Bearer <token>` on every /v1 call.
+    flow: password
+    token_url: https://<appliance>/auth/realms/zerto/protocol/openid-connect/token
+    grant_type: password
+    client_id: zerto-client
+    realm: zerto
+    required_scope: openid
+    token_lifetime_seconds: 60
+    refresh: refresh_token (returned alongside access_token)
+    notes: >-
+      scope=openid is REQUIRED — without it the token is issued but /v1/* endpoints reject it.
+      Lab/PoC installs may use the built-in `master` realm and `admin-cli` client instead of
+      the production `zerto` realm / `zerto-client`.
+  - name: BearerToken
+    type: http
+    scheme: bearer
+    bearerFormat: JWT
+    description: The Keycloak-issued access_token is presented on all /v1 API calls.
+    applied_to: all /v1 endpoints
+sources:
+  - https://github.com/ZertoPublic/zerto-api-quickstart
+  - https://github.com/saackerman/ZertoSwaggerAPI (Zerto-API-10.0-U6-Reference.md)

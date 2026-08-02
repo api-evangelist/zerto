@@ -1,8 +1,29 @@
 aid: zerto
-name: ZeRTO
-description: ZeRTO is a company surfaced as a portfolio company of battery-ventures, crv, ivp and added
-  to the API Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment
-  pipeline.
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/zerto.png
+name: Zerto
+description: >-
+  Zerto, a Hewlett Packard Enterprise company, provides continuous data protection (CDP),
+  disaster recovery, ransomware resilience, and multi-cloud data mobility for on-premises and
+  cloud workloads. Its ZVM (Zerto Virtual Manager), ZCA (Zerto Cloud Appliance), and ZIC (Zerto
+  In-Cloud) appliances expose a REST API under /v1, authenticated through an embedded Keycloak
+  OAuth2 identity provider. The API lets teams manage Virtual Protection Groups (VPGs),
+  orchestrate non-disruptive failover tests and live failover/failback, browse recovery
+  checkpoints, run file- and VM-level restores, manage long-term retention repositories, and
+  consume alerts and events — everything the Zerto UI does, driven programmatically. Zerto
+  publishes an official PowerShell SDK, plus Python, Ansible, Terraform, and Postman examples via
+  its ZertoPublic GitHub organization.
 url: https://raw.githubusercontent.com/api-evangelist/zerto/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -14,10 +35,44 @@ x-tier: stub
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-21'
 tags:
 - Company
-apis: []
+- Disaster Recovery
+- Data Protection
+- Backup
+- Ransomware Resilience
+- Business Continuity
+- Cloud Migration
+- Replication
+- Infrastructure
+apis:
+- name: Zerto ZVM REST API
+  description: >-
+    REST API exposed by the Zerto Virtual Manager / Zerto Cloud Appliance for programmatic
+    disaster-recovery management — VPGs, failover, checkpoints, VRAs, peer sites, alerts, events,
+    tasks, and long-term retention. Authenticated via embedded Keycloak OAuth2 (bearer JWT).
+  humanURL: https://help.zerto.com/
+  baseURL: https://zvm.example.com/v1
+  tags:
+  - Disaster Recovery
+  - Replication
+  - Data Protection
+  properties:
+  - type: Authentication
+    url: authentication/zerto-authentication.yml
+  - type: Conventions
+    url: conventions/zerto-conventions.yml
+  - type: ErrorCatalog
+    url: errors/zerto-problem-types.yml
+  - type: Lifecycle
+    url: lifecycle/zerto-lifecycle.yml
+  - type: Conformance
+    url: conformance/zerto-conformance.yml
+  - type: DataModel
+    url: data-model/zerto-data-model.yml
+  - type: MCPServer
+    url: mcp/zerto-mcp.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -26,3 +81,52 @@ maintainers:
 common:
 - type: Website
   url: https://www.zerto.com/
+- type: DeveloperPortal
+  url: https://help.zerto.com/
+- type: Documentation
+  url: https://help.zerto.com/
+- type: APIReference
+  url: https://github.com/saackerman/ZertoSwaggerAPI
+- type: GettingStarted
+  url: https://github.com/ZertoPublic/zerto-api-quickstart
+- type: Authentication
+  url: authentication/zerto-authentication.yml
+- type: Conventions
+  url: conventions/zerto-conventions.yml
+- type: ChangeLog
+  url: changelog/zerto-changelog.yml
+- type: Lifecycle
+  url: lifecycle/zerto-lifecycle.yml
+- type: DataModel
+  url: data-model/zerto-data-model.yml
+- type: MCPServer
+  url: mcp/zerto-mcp.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: LLMsTxt
+  url: llms/zerto-llms.txt
+- type: Packages
+  url: packages/zerto-packages.yml
+- type: SDKs
+  url: packages/zerto-packages.yml
+- type: DomainSecurity
+  url: security/zerto-domain-security.yml
+- type: Postman
+  url: https://github.com/ZertoPublic/PostmanCollections
+- type: GitHubOrganization
+  url: https://github.com/ZertoPublic
+- type: Support
+  url: https://www.zerto.com/support-and-services/support/
+- type: Community
+  url: https://www.zerto.com/myzerto/forums/
+- type: Blog
+  url: https://www.zerto.com/resources/blog/
+- type: Pricing
+  url: https://www.zerto.com/try-or-buy/pricing-and-licensing/
+- type: SignUp
+  url: https://www.zerto.com/try-or-buy/try-zerto-free/
+x-enrichment:
+  date: '2026-07-21'
+  status: enriched
+  artifacts_added: 16
+  pass: local-v1

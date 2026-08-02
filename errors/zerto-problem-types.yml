@@ -1,0 +1,33 @@
+generated: '2026-07-21'
+method: derived
+source: https://github.com/ZertoPublic/zerto-api-quickstart (auth behavior) + standard HTTP semantics
+format: http-status
+note: >-
+  The Zerto ZVM REST API does not publish an RFC 9457 problem+json catalog. These entries are
+  DERIVED from documented authentication behavior (Keycloak) and standard REST status semantics
+  observed in the official quickstart. Titles/remediation reflect documented Zerto behavior only.
+problems:
+  - status: 401
+    title: Unauthorized
+    cause: Missing, invalid, or expired bearer token; or token issued without scope=openid.
+    remediation: >-
+      Re-authenticate against /auth/realms/zerto/protocol/openid-connect/token with
+      scope=openid. Tokens often expire after 60s — request a fresh token or use the
+      refresh_token for long-running tools.
+    source: authentication/zerto-authentication.yml
+  - status: 403
+    title: Forbidden
+    cause: Authenticated user lacks the Zerto role/permission for the operation.
+    remediation: Assign the required Zerto role (e.g. Zerto Admin) to the service account.
+  - status: 404
+    title: Not Found
+    cause: Referenced entity id (vpgId, vmId, taskId, siteId) does not exist.
+    remediation: List the collection first (e.g. GET /v1/vpgs) to obtain a valid identifier.
+  - status: 400
+    title: Bad Request
+    cause: Malformed body or invalid VPG/recovery settings on a POST/PUT operation.
+    remediation: Validate the settings payload against the /v1/vpgSettings sub-resources before commit.
+  - status: 500
+    title: Internal Server Error
+    cause: Appliance-side failure while executing a DR operation.
+    remediation: Inspect the associated task (GET /v1/tasks/{taskId}) and appliance alerts (GET /v1/alerts).

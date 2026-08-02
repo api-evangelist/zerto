@@ -1,0 +1,53 @@
+generated: '2026-07-21'
+method: searched
+source: https://github.com/saackerman/ZertoSwaggerAPI/blob/main/Zerto-API-10.0-U6-Reference.md
+docs: https://github.com/ZertoPublic/zerto-api-quickstart
+api: Zerto ZVM REST API v1
+conventions:
+  authentication:
+    style: oauth2-bearer
+    detail: Keycloak-issued JWT; scope=openid required. See authentication/zerto-authentication.yml
+  base_path:
+    style: uri-path
+    value: /v1
+    base_url_pattern: https://<appliance-host>:443/v1
+    note: Self-hosted on the ZVM / ZCA / ZIC appliance; there is no single public multi-tenant host.
+  content_types:
+    default: application/json
+    also_supported: [application/xml]
+    request_header: Accept
+  versioning:
+    style: uri-path
+    current: v1
+    tied_to_product_release: true
+    note: The /v1 API surface tracks the appliance software version (e.g. ZVM 10.0 U6).
+  pagination:
+    style: query-filter
+    detail: >-
+      List endpoints are filtered by query parameters (e.g. GET /v1/alerts supports
+      startDate/endDate/vpgIdentifier/level/entities; GET /v1/vms supports vpgName). No
+      cursor/offset envelope is documented; list endpoints return JSON arrays.
+  async_operations:
+    style: task-polling
+    detail: >-
+      Long-running write operations (Failover, FailoverTest, Move, Clone, VRA upgrade, VPG
+      commit) return a task identifier. Poll GET /v1/tasks/{taskId} until completion.
+    tasks_endpoint: /v1/tasks
+  filtering:
+    style: query-parameters
+    examples:
+      - GET /v1/alerts?startDate=&endDate=&level=&vpgIdentifier=
+      - GET /v1/vms?vpgName=
+      - GET /v1/peersites (filterable)
+  idempotency:
+    supported: false
+    note: No Idempotency-Key header or idempotent-retry contract is documented for write operations.
+  error_envelope:
+    detail: See errors/zerto-problem-types.yml. Standard HTTP status codes; Keycloak 401 on auth failure.
+  rate_limiting:
+    signaled: false
+    note: No published rate-limit headers; the API is single-tenant on a customer-owned appliance.
+cross_links:
+  authentication: authentication/zerto-authentication.yml
+  errors: errors/zerto-problem-types.yml
+  lifecycle: lifecycle/zerto-lifecycle.yml

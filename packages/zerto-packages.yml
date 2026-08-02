@@ -1,0 +1,39 @@
+generated: '2026-07-21'
+method: searched
+source: https://github.com/ZertoPublic
+packages:
+  - language: powershell
+    registry: powershellgallery
+    name: ZertoApiWrapper
+    url: https://www.powershellgallery.com/packages/ZertoApiWrapper
+    repo: https://github.com/ZertoPublic/ZertoApiWrapper
+    install: Install-Module -Name ZertoApiWrapper
+    description: Official Zerto Tech Alliances PowerShell module wrapping the Zerto Virtual Manager (ZVM) REST API.
+    official: true
+  - language: python
+    registry: github
+    name: Python-Automation-Examples
+    url: https://github.com/ZertoPublic/Python-Automation-Examples
+    install: git clone https://github.com/ZertoPublic/Python-Automation-Examples
+    description: Official Zerto automation examples leveraging Python against the ZVM/ZCA REST API.
+    official: true
+  - language: yaml
+    registry: github
+    name: Ansible
+    url: https://github.com/ZertoPublic/Ansible
+    install: git clone https://github.com/ZertoPublic/Ansible
+    description: Official collection of Ansible playbooks for automating Zerto tasks via the REST API.
+    official: true
+  - language: hcl
+    registry: github
+    name: Terraform-Examples
+    url: https://github.com/ZertoPublic/Terraform-Examples
+    install: git clone https://github.com/ZertoPublic/Terraform-Examples
+    description: Official Terraform configuration skeletons for ZVM/ZCA deployment.
+    official: true
+notes: >-
+  Zerto exposes an on-appliance REST API (ZVM/ZCA/ZIC). The canonical first-party client
+  library is the ZertoApiWrapper PowerShell module, published to the PowerShell Gallery by
+  the Zerto Tech Alliances team (ZertoPublic org). Community wrappers also exist for Python
+  (pilotschenck/pyzerto-unofficial, keesbos/pyzerto) but are not first-party and are not
+  published to PyPI.

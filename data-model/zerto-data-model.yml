@@ -1,0 +1,91 @@
+generated: '2026-07-21'
+method: derived
+source: https://github.com/saackerman/ZertoSwaggerAPI/blob/main/Zerto-API-10.0-U6-Reference.md
+note: Entity-relationship graph DERIVED from the documented Zerto ZVM REST API v1 resource surface.
+entities:
+  - name: LocalSite
+    endpoint: /v1/localsite
+    description: The Zerto site the appliance manages.
+  - name: PeerSite
+    endpoint: /v1/peersites
+    description: A paired remote Zerto site (recovery target/source).
+  - name: VirtualizationSite
+    endpoint: /v1/virtualizationsites
+    description: A hypervisor/cloud site providing datastores, hosts and networks.
+  - name: VPG
+    endpoint: /v1/vpgs
+    description: Virtual Protection Group — the unit of replication and recovery consistency.
+  - name: VpgSettings
+    endpoint: /v1/vpgSettings
+    description: Editable draft of a VPG configuration (basic, journal, networks, recovery, vms).
+  - name: VM
+    endpoint: /v1/vms
+    description: A protected virtual machine, a member of a VPG.
+  - name: Checkpoint
+    endpoint: /v1/vpgs/{vpgId}/checkpoints
+    description: A point-in-time to which a VPG/VM can be recovered.
+  - name: VRA
+    endpoint: /v1/vras
+    description: Virtual Replication Appliance executing replication on a host.
+  - name: Datastore
+    endpoint: /v1/datastores
+  - name: Volume
+    endpoint: /v1/volumes
+  - name: Alert
+    endpoint: /v1/alerts
+  - name: Event
+    endpoint: /v1/events
+  - name: Task
+    endpoint: /v1/tasks
+    description: Async operation handle for long-running write operations.
+  - name: LtrRepository
+    endpoint: /v1/ltr/repositories
+    description: Long-term retention repository.
+  - name: ZORG
+    endpoint: /v1/zorgs
+    description: Zerto Organization (multi-tenant grouping for cloud service providers).
+  - name: ServiceProfile
+    endpoint: /v1/serviceprofiles
+  - name: License
+    endpoint: /v1/license
+relationships:
+  - from: VPG
+    to: VM
+    type: has_many
+    via: vpgIdentifier
+  - from: VM
+    to: VPG
+    type: belongs_to
+    via: vpgName
+  - from: VPG
+    to: Checkpoint
+    type: has_many
+    via: vpgId
+  - from: VM
+    to: Checkpoint
+    type: has_many
+    via: pointsInTime
+  - from: VPG
+    to: PeerSite
+    type: belongs_to
+    via: recoverySiteIdentifier
+  - from: VpgSettings
+    to: VPG
+    type: has_one
+    via: vpgSettings id -> commit
+  - from: VRA
+    to: VirtualizationSite
+    type: belongs_to
+    via: siteIdentifier
+  - from: LtrRepository
+    to: VPG
+    type: has_many
+    via: retention
+  - from: ZORG
+    to: VPG
+    type: has_many
+    via: zorgIdentifier
+  - from: Task
+    to: VPG
+    type: belongs_to
+    via: task result entity

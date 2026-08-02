@@ -1,0 +1,26 @@
+generated: '2026-07-21'
+method: derived
+source: https://github.com/saackerman/ZertoSwaggerAPI/blob/main/Zerto-API-10.0-U6-Reference.md
+standards:
+  - id: oauth2
+    conforms: true
+    evidence: Auth uses OAuth2 Resource Owner Password Credentials grant via embedded Keycloak.
+  - id: oidc
+    conforms: true
+    evidence: Token endpoint is /auth/realms/zerto/protocol/openid-connect/token; scope=openid required.
+  - id: rest
+    conforms: true
+    evidence: Resource-oriented /v1 paths with GET/POST/PUT/DELETE and JSON representations.
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: No application/problem+json error envelope documented.
+  - id: json-api
+    conforms: false
+  - id: fhir-r4
+    conforms: false
+  - id: scim2
+    conforms: false
+  - id: odata
+    conforms: false
+  - id: fapi
+    conforms: false

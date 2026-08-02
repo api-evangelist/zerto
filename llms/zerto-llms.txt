@@ -1,0 +1,43 @@
+# Zerto
+
+> Zerto (a Hewlett Packard Enterprise company) provides continuous data protection, disaster
+> recovery, ransomware resilience, and multi-cloud data mobility. Its ZVM/ZCA/ZIC appliances
+> expose a REST API (/v1) authenticated via an embedded Keycloak OAuth2 provider, used to manage
+> Virtual Protection Groups (VPGs), failover/failback, checkpoints, alerts, and long-term retention.
+
+## API
+
+- [Zerto ZVM REST API v1](https://help.zerto.com/): Manage DR programmatically — VPGs, VMs, failover, checkpoints, alerts, events, VRAs, peer sites, LTR. Base URL: https://<appliance-host>:443/v1. Auth: Keycloak OAuth2 bearer (scope=openid).
+
+## Docs
+
+- [Zerto Knowledge Portal](https://help.zerto.com/): Product and API documentation.
+- [Getting Started with the Zerto REST API](https://github.com/ZertoPublic/zerto-api-quickstart): Official quickstart with token + example scripts (bash/Python/PowerShell) for ZVM, ZCA, and ZIC.
+- [Zerto API 10.0 U6 Reference](https://github.com/saackerman/ZertoSwaggerAPI): Endpoint reference for the ZVM REST API.
+
+## SDKs & Tooling
+
+- [ZertoApiWrapper (PowerShell)](https://www.powershellgallery.com/packages/ZertoApiWrapper): Official PowerShell module wrapping the ZVM REST API. `Install-Module -Name ZertoApiWrapper`.
+- [Python Automation Examples](https://github.com/ZertoPublic/Python-Automation-Examples): Official Python examples.
+- [Ansible](https://github.com/ZertoPublic/Ansible): Official Ansible playbooks.
+- [Terraform Examples](https://github.com/ZertoPublic/Terraform-Examples): Official Terraform skeletons.
+- [Postman Collections](https://github.com/ZertoPublic/PostmanCollections): Official Postman collection examples.
+
+## Repo artifacts (API Evangelist enrichment)
+
+- Authentication: authentication/zerto-authentication.yml
+- Conventions: conventions/zerto-conventions.yml
+- Error semantics: errors/zerto-problem-types.yml
+- Lifecycle/versioning: lifecycle/zerto-lifecycle.yml
+- Data model: data-model/zerto-data-model.yml
+- MCP (candidate): mcp/zerto-mcp.yml
+- Agent Skills: skills/_index.yml
+
+## Company
+
+- [Zerto](https://www.zerto.com/): Company site.
+- [Support](https://www.zerto.com/support-and-services/support/)
+- [Blog](https://www.zerto.com/resources/blog/)
+- [Pricing & Licensing](https://www.zerto.com/try-or-buy/pricing-and-licensing/)
+- [Try Zerto Free](https://www.zerto.com/try-or-buy/try-zerto-free/)
+- [GitHub (ZertoPublic)](https://github.com/ZertoPublic)

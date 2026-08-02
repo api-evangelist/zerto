@@ -1,0 +1,34 @@
+generated: '2026-07-21'
+method: generated
+source: https://github.com/saackerman/ZertoSwaggerAPI/blob/main/Zerto-API-10.0-U6-Reference.md
+api: Zerto ZVM REST API v1
+note: >-
+  Agent Skills GENERATED from the documented Zerto ZVM REST API endpoints and the official
+  quickstart auth model. Every step is grounded in a real documented endpoint path (there is no
+  public OpenAPI spec; operations are referenced by HTTP method + /v1 path).
+skills:
+  - file: zerto-authenticate.md
+    name: Authenticate to the Zerto API
+    api: Zerto ZVM REST API v1
+    operations:
+      - 'POST /auth/realms/zerto/protocol/openid-connect/token'
+  - file: zerto-vpg-rpo-report.md
+    name: Report every VPG and its RPO
+    api: Zerto ZVM REST API v1
+    operations:
+      - 'GET /v1/vpgs'
+      - 'GET /v1/vpgs/{vpgId}'
+  - file: zerto-run-failover-test.md
+    name: Run a non-disruptive failover test
+    api: Zerto ZVM REST API v1
+    operations:
+      - 'GET /v1/vpgs'
+      - 'POST /v1/vpgs/{vpgId}/FailoverTest'
+      - 'GET /v1/tasks/{taskId}'
+      - 'POST /v1/vpgs/{vpgId}/FailoverTestStop'
+  - file: zerto-triage-alerts.md
+    name: Triage and dismiss alerts
+    api: Zerto ZVM REST API v1
+    operations:
+      - 'GET /v1/alerts'
+      - 'POST /v1/alerts/{id}/dismiss'
